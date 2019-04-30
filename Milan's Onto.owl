@@ -1,0 +1,986 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24/">
+    <Prefix name="" IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="IoT"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_DateofIssue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerSign"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_PublicKey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_SerialNo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DeviceUID"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#FirmwareVendor"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#FirmwareVersion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#HardwareVendor"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#HardwareVersion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#MacAdd"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Manufacturer"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#SerialNumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="Name"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#T1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#T2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="DA3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="DC1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="DC2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="DC3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="DC4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="OCA1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="ODA1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="ODA2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="ODA3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="T0"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="T3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="T4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="T5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="dev1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="dev2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="dev3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="dev4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="dev5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="dev6"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#T1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#T2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+        <NamedIndividual IRI="DA3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+        <NamedIndividual IRI="DC1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+        <NamedIndividual IRI="DC2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+        <NamedIndividual IRI="DC3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+        <NamedIndividual IRI="DC4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+        <NamedIndividual IRI="OCA1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+        <NamedIndividual IRI="ODA1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+        <NamedIndividual IRI="ODA2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+        <NamedIndividual IRI="ODA3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+        <NamedIndividual IRI="T0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+        <NamedIndividual IRI="T3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+        <NamedIndividual IRI="T4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+        <NamedIndividual IRI="T5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+        <NamedIndividual IRI="dev1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+        <NamedIndividual IRI="dev1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+        <NamedIndividual IRI="dev1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="IoT"/>
+        <NamedIndividual IRI="dev1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="IoT"/>
+        <NamedIndividual IRI="dev2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="IoT"/>
+        <NamedIndividual IRI="dev3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="IoT"/>
+        <NamedIndividual IRI="dev4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="IoT"/>
+        <NamedIndividual IRI="dev5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="IoT"/>
+        <NamedIndividual IRI="dev6"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev1"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev1"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev1"/>
+        <NamedIndividual IRI="DA3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev1"/>
+        <NamedIndividual IRI="DC1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev1"/>
+        <NamedIndividual IRI="DC2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev1"/>
+        <NamedIndividual IRI="DC3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev1"/>
+        <NamedIndividual IRI="DC4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev2"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev2"/>
+        <NamedIndividual IRI="DA3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev2"/>
+        <NamedIndividual IRI="DC1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev2"/>
+        <NamedIndividual IRI="DC2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev2"/>
+        <NamedIndividual IRI="DC3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev3"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev3"/>
+        <NamedIndividual IRI="DC1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev3"/>
+        <NamedIndividual IRI="DC2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev4"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev4"/>
+        <NamedIndividual IRI="DC1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev4"/>
+        <NamedIndividual IRI="DC4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev5"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev5"/>
+        <NamedIndividual IRI="DC1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev6"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev6"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <NamedIndividual IRI="dev6"/>
+        <NamedIndividual IRI="DA3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev6"/>
+        <NamedIndividual IRI="DC2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev6"/>
+        <NamedIndividual IRI="DC3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <NamedIndividual IRI="dev6"/>
+        <NamedIndividual IRI="DC4"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DeviceUID"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">212</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#MacAdd"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA2"/>
+        <Literal>AbCE12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#T1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+        <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#T2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#FirmwareVendor"/>
+        <NamedIndividual IRI="DA3"/>
+        <Literal>Windows</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#FirmwareVersion"/>
+        <NamedIndividual IRI="DA3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">10.1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_DateofIssue"/>
+        <NamedIndividual IRI="DC1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2018-01-01T21:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerSign"/>
+        <NamedIndividual IRI="DC2"/>
+        <Literal>It is secure</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_SerialNo"/>
+        <NamedIndividual IRI="DC3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">14789</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_PublicKey"/>
+        <NamedIndividual IRI="DC4"/>
+        <Literal>Secure To Share</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerName"/>
+        <NamedIndividual IRI="OCA1"/>
+        <Literal>secureAuthority</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="Name"/>
+        <NamedIndividual IRI="ODA1"/>
+        <Literal>iot</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Manufacturer"/>
+        <NamedIndividual IRI="ODA2"/>
+        <Literal>samsung</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#HardwareVendor"/>
+        <NamedIndividual IRI="ODA3"/>
+        <Literal>samsung</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#HardwareVersion"/>
+        <NamedIndividual IRI="ODA3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">42.53</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+        <NamedIndividual IRI="T0"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+        <NamedIndividual IRI="T3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+        <NamedIndividual IRI="T4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+        <NamedIndividual IRI="T5"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <Class IRI="IoT"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <Class IRI="IoT"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+        <Class IRI="IoT"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_DateofIssue"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerName"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerSign"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_PublicKey"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_SerialNo"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DeviceUID"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#FirmwareVendor"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#FirmwareVersion"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#HardwareVendor"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#HardwareVersion"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#MacAdd"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Manufacturer"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#SerialNumber"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="Name"/>
+        <Class IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_DateofIssue"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerSign"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_PublicKey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_SerialNo"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DeviceUID"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#FirmwareVendor"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#FirmwareVersion"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#HardwareVendor"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#HardwareVersion"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#MacAdd"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Manufacturer"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#SerialNumber"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#TrustLevel"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="Name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S7</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="IoT"/>
+                <NamedIndividual IRI="dev1"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev1"/>
+                <NamedIndividual IRI="DC1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev1"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev1"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev1"/>
+                <NamedIndividual IRI="DA3"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev1"/>
+                <NamedIndividual IRI="DC2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev1"/>
+                <NamedIndividual IRI="DC3"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev1"/>
+                <NamedIndividual IRI="DC4"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+                <NamedIndividual IRI="dev1"/>
+                <NamedIndividual IRI="T5"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S1</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="IoT"/>
+                <NamedIndividual IRI="dev2"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev2"/>
+                <NamedIndividual IRI="DC1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev2"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev2"/>
+                <NamedIndividual IRI="DA3"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev2"/>
+                <NamedIndividual IRI="DC2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev2"/>
+                <NamedIndividual IRI="DC3"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+                <NamedIndividual IRI="dev2"/>
+                <NamedIndividual IRI="T4"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S2</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="IoT"/>
+                <NamedIndividual IRI="dev3"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev3"/>
+                <NamedIndividual IRI="DC1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev3"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev3"/>
+                <NamedIndividual IRI="DC2"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+                <NamedIndividual IRI="dev3"/>
+                <NamedIndividual IRI="T3"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S3</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="IoT"/>
+                <NamedIndividual IRI="dev4"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev4"/>
+                <NamedIndividual IRI="DC1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev4"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev4"/>
+                <NamedIndividual IRI="DC4"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+                <NamedIndividual IRI="dev4"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#T2"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S4</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="IoT"/>
+                <NamedIndividual IRI="dev5"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev5"/>
+                <NamedIndividual IRI="DC1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev5"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+                <NamedIndividual IRI="dev5"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#T1"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S5</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="IoT"/>
+                <NamedIndividual IRI="dev6"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev6"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev6"/>
+                <NamedIndividual IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#DA2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Attributes"/>
+                <NamedIndividual IRI="dev6"/>
+                <NamedIndividual IRI="DA3"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev6"/>
+                <NamedIndividual IRI="DC2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev6"/>
+                <NamedIndividual IRI="DC3"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Certificate"/>
+                <NamedIndividual IRI="dev6"/>
+                <NamedIndividual IRI="DC4"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Has_Trust"/>
+                <NamedIndividual IRI="dev6"/>
+                <NamedIndividual IRI="T0"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Certificate_IssuerName</IRI>
+        <Literal>DC1: Valid date of Issue of digital certificate
+DC2: Issuer authority signature
+DC3: Serial number if digital certificate 
+DC4: Public key of device for encryption 
+ODC1 : digital certificate Issuer name
+ODC2:</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Attributes</IRI>
+        <Literal>DA1 : Device ID
+DA2 : Device Physical addresss(MAC)
+DA3: Version and name of Operating system
+ODA1: Name of the device
+ODA2: Serial number
+ODA3: Hardware version and vendor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Device_Certificate</IRI>
+        <Literal>DC1: Valid date of Issue of certificate
+DC2: Issuer signature 
+DC3: serial number of digital certificate
+DC4: public key for encryption 
+OCA1 : digital certificate issuer name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.semanticweb.org/administrator/ontologies/2019/0/untitled-ontology-24#Trust_Mechanism</IRI>
+        <Literal>Trust level is assign to devices from T1 = 1 to T5 = 5
+ based on different combination of device certificate and device attributes.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>DA3</IRI>
+        <Literal>bdzbxvnbmbmbmfgsfgfgbncbvnhrvvgb</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>IoT</IRI>
+        <Literal>IoT devices Dev1 to Dev5 with different sets of attributes
+from Device attributes and device certificate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>dev6</IRI>
+        <Literal>Absence of validity of date lead to level 0 trust level</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi -->
+

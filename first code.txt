@@ -1,0 +1,1231 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.InputMismatchException;
+import java.text.ParseException;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.stream.IntStream;
+///*
+
+public class Main {
+    public static void main(String args[]) {
+
+
+        /////////// Device attributes
+        System.out.println(" Enter the device credentials and certificate info \n" +
+                " KEYs   Mandatory attributes list  ------- KEYs  Optional Attributes list \n" +
+                "DA1=    device ID " + "\t\t\t\t           Def= date of issue & Validity \n" +
+                "DA2=    Mac add " + "\t\t\t               DC1= CA Certificate serial num \n" +
+                "DA3=    firmware versio " + "\t\t\t       DC2  Signature of CA\n" +
+                "ODA1    Device name " + "\t\t\t           DC3= Device public key \n" +
+                "ODA2=   Device serial num" + "\t\t\t      ODC1= CA issuer" +
+                "ODA4 =  Device description \n" +
+                "ODA5=   hardware version\n" +
+                "CF=     device configure \n" +
+                "ON=     device on \n" + "CN= To communication history\n" + "\n"
+
+
+        );
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(" How many attributes you have FOR DEVICE A ");
+        Scanner scanner1 = new Scanner(System.in);
+        int num = scanner1.nextInt();
+        int T1 = 0;
+        int T2 = 0;
+        int T3 = 0;
+        int k = 0;
+        String[] keep = new String[num];
+        DeviceAttribute d1 = new DeviceAttribute();
+        DeviceCertificate dc1 = new DeviceCertificate();
+        DeviceStatus ds1 = new DeviceStatus();
+        for (int i = 1; i < num + 1; i++) {
+
+
+            System.out.println(" Enter Key of " + i + " attributes you have for DEVICE A ");
+            String numatt = scanner.next();
+
+            keep[k] = numatt;
+            k++;
+            switch (numatt) {
+                case "oda1":
+                    System.out.println("Enter Device Name: Max lenght = 10");
+                    String device_name = scanner.next();
+                    while (device_name.length() > 10) {
+                        System.out.println("Name is too long");
+                        device_name = scanner.next();
+                    }
+                    d1.setName(device_name);
+                    System.out.println("Accepted");
+
+
+                    break;
+
+                case "oda4":
+                    System.out.println("Enter Device Description Max=20 character");
+                    String desc = scanner.next();
+                    while (desc.length() > 20) {
+                        System.out.println("Description is too long");
+                        desc = scanner.next();
+                    }
+                    d1.setDesc(desc);
+                    System.out.println("Accepted");
+
+
+                    break;
+
+
+                case "da1":
+                    System.out.println("Enter Device ID:Max length = 999");
+                    int id = scanner.nextInt();
+
+                    while (id > 999) {
+                        System.out.println("Device ID is out of range enter again");
+                        id = scanner.nextInt();
+
+                    }
+                    d1.setDeviceID(id);
+                    System.out.println("Accepted");
+                    break;
+
+
+                case "da2":
+                    System.out.println("Enter Physical address (Mac address) length = 12");
+                    String macadd = scanner.next();
+                    while (macadd.length() != 12) {
+                        System.out.println("Mac add is out of range");
+                        macadd = scanner.next();
+                    }
+                    d1.setMacadd(macadd);
+                    System.out.println("Accepted");
+                    break;
+
+                case "da3":
+                    System.out.println("Enter Firmware Version");
+                    double firmNum = scanner.nextDouble();
+                    double d = Double.valueOf(firmNum);
+                    d1.setFirmNum(d);
+                    System.out.println("Enter Firmware Vendor Max range = 6");
+                    String firmwareVendor = scanner.next();
+                    while (firmwareVendor.length() > 6) {
+                        System.out.println("Firmware name out of range");
+                        firmwareVendor = scanner.next();
+                    }
+                    d1.setFirmVendor(firmwareVendor);
+                    System.out.println("Accepted");
+
+                    break;
+
+                case "dc3":
+                    System.out.println("Enter device public key = length =10");
+                    String publickey = scanner.next();
+                    while (publickey.length() != 10) {
+                        System.out.println("public key  out of range");
+
+                    }
+                    d1.setPublicKey(publickey);
+                    System.out.println("Accepted");
+
+
+                    break;
+
+
+                case "oda5":
+                    System.out.println("Enter Hardware Version");
+                    float hardwareVersion = scanner.nextFloat();
+                    d1.setHardwareVersion(hardwareVersion);
+                    System.out.println("Accepted");
+                    break;
+
+                case "oda2":
+                    System.out.println("Enter Device Serial Number Max length = 99999");
+                    int serialNumber = scanner.nextInt();
+                    while (serialNumber > 99999) {
+                        System.out.println("Device serial number is out of range ");
+                        serialNumber = scanner.nextInt();
+                    }
+                    d1.setSerialNumber(serialNumber);
+                    System.out.println("Accepted");
+
+                    break;
+
+
+                ////////////Device status
+                //System.out.println("Device Status");
+
+
+                case "on":
+                    System.out.println("Device On");
+                    boolean isOn = scanner.nextBoolean();
+                    ds1.setOn(isOn);
+                    break;
+
+                case "cf":
+                    System.out.println("Device Configured");
+                    boolean isConfigured = scanner.nextBoolean();
+                    ds1.setIsconfigured(isConfigured);
+                    break;
+
+
+                ///////////Device certificate
+
+                // System.out.println("Details about Digital certificate");
+
+
+                case "odc1":
+                    System.out.println("Enter issuer authority name Max= 10 char");
+                    String issuer = scanner.next();
+                    while (issuer.length() > 10) {
+                        System.out.println("Name is too long");
+                        issuer = scanner.next();
+                    }
+
+                    dc1.setIssuer(issuer);
+                    System.out.println("Accepted");
+                    break;
+
+                case "dc1":
+                    System.out.println("Enter serial number Max= 5 digit");
+                    int sernum = scanner.nextInt();
+                    while (sernum > 99999) {
+                        System.out.println("serial number is out of bound");
+                        sernum = scanner.nextInt();
+                    }
+                    dc1.setSerialNumber(sernum);
+                    System.out.println("Accepted");
+
+
+                    break;
+
+                case "dc2":
+                    System.out.println("Enter the digital signature length = 12");
+                    String signalgo = scanner.next().toUpperCase();
+                    while (signalgo.length() != 12) {
+                        System.out.println("signature is out of bound");
+                        signalgo = scanner.next().toUpperCase();
+                    }
+
+                    dc1.setSignAlgo(signalgo);
+                    System.out.println("Accepted");
+
+                    break;
+
+                case "def":
+                    System.out.println("Enter the date of issue MM/dd/yyyy");
+
+                    String expectedPattern = "MM/dd/yyyy";
+                    SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
+                    try {
+                        // (2) give the formatter a String that matches the SimpleDateFormat pattern
+                        String userInput = scanner.next();
+                        Date date = formatter.parse(userInput);
+
+                        // (3) prints out "Tue Sep 22 00:00:00 EDT 2009"
+                        dc1.setDateOfIssue(date);
+
+                    } catch (ParseException e) {
+                        // execution will come here if the String that is given
+                        // does not match the expected format.
+                        e.printStackTrace();
+                    }
+                    System.out.println("Enter validity staus");
+                    boolean validity = scanner.nextBoolean();
+                    dc1.setValidity(validity);
+                    System.out.println("Accepted");
+
+                    break;
+
+
+                case "cn":
+                    break;
+
+
+            }
+        }
+        System.out.println("device A attributes list number" + Arrays.toString(keep));
+
+        //////personal traints calculation for device 1////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        System.out.println("DEVICE A TRUST LEVEL");
+        //////////////personal traints  level 3 ///////////////////////////////////////////////
+        if (d1.getDeviceID() != 0 && d1.getMacadd() != null && d1.getFirmNum() != 0 && d1.getFirmVendor() != null && dc1.getDateOfIssue() != null && dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0 && d1.getPublicKey() != null) {
+            T1 = 5;
+            System.out.println("Level 5 Trust");
+        } else if ((d1.getDeviceID() != 0 && d1.getMacadd() != null) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0 && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+
+            System.out.println("Level 4 Trust");
+        } else if ((d1.getMacadd() != null && d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0 && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d1.getDeviceID() != 0 && d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0 && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d1.getDeviceID() != 0 && d1.getMacadd() != null) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d1.getMacadd() != null && d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d1.getDeviceID() != 0 && d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d1.getDeviceID() != 0 && d1.getMacadd() != null) && (dc1.getValidity() == true && dc1.getSerialNumber() != 0 && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d1.getMacadd() != null && d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getValidity() == true && dc1.getSerialNumber() != 0 && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d1.getDeviceID() != 0 && d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getValidity() == true && dc1.getSerialNumber() != 0 && dc1.getDateOfIssue() != null)) {
+            T1 = 4;
+            System.out.println("Level 4 trust");
+        }
+        ////////////////level 3
+        else if ((d1.getDeviceID() != 0) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getDateOfIssue() != null)) {
+            T1 = 3;
+            System.out.println("Level 3 trust");
+        } else if ((d1.getMacadd() != null) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getDateOfIssue() != null)) {
+            T1 = 3;
+            System.out.println("Level 3 trust");
+        } else if ((d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getValidity() == true && dc1.getSignAlgo() != null && dc1.getDateOfIssue() != null)) {
+            T1 = 3;
+            System.out.println("Level 3 trust");
+        }
+        ////////////////////level 2
+        else if ((d1.getDeviceID() != 0) && (dc1.getValidity() == true && d1.getPublicKey() != null && dc1.getDateOfIssue() != null)) {
+            T1 = 2;
+            System.out.println("Level 2 trust");
+        } else if ((d1.getMacadd() != null) && (dc1.getValidity() == true && d1.getPublicKey() != null && dc1.getDateOfIssue() != null)) {
+            T1 = 2;
+            System.out.println("Level 2 trust");
+        }
+
+        ///////level 1
+
+        else if ((d1.getDeviceID() != 0) && (dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0 && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d1.getMacadd() != null) && (dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0 && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0 && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        }///////
+
+        else if ((d1.getDeviceID() != 0) && (dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d1.getMacadd() != null) && (dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getSignAlgo() != null && dc1.getSerialNumber() != 0)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        }///
+
+        else if ((d1.getDeviceID() != 0) && (dc1.getSerialNumber() != 0 && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d1.getMacadd() != null) && (dc1.getSerialNumber() != 0 && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getSerialNumber() != 0 && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        }////
+
+        else if ((d1.getDeviceID() != 0) && (dc1.getSignAlgo() != null && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d1.getMacadd() != null) && (dc1.getSignAlgo() != null && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getSignAlgo() != null && d1.getPublicKey() != null)) {
+            T1 = 1;
+            System.out.println("Level 1 trust");
+        }
+        ////////////level 0
+
+        else if ((d1.getDeviceID() != 0) && (dc1.getSignAlgo() != null)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d1.getMacadd() != null) && (dc1.getSignAlgo() != null)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getSignAlgo() != null)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        }///
+
+        else if ((d1.getDeviceID() != 0) && (dc1.getSerialNumber() != 0)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d1.getMacadd() != null) && (dc1.getSerialNumber() != 0)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d1.getFirmNum() != 0 && d1.getFirmVendor() != null) && (dc1.getSerialNumber() != 0)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        }///
+
+
+        else if ((d1.getDeviceID() != 0) && (d1.getPublicKey() != null)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d1.getMacadd() != null) && (d1.getPublicKey() != null)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d1.getFirmNum() != 0) && (d1.getPublicKey() != null)) {
+            T1 = 0;
+            System.out.println("Level 0 trust");
+        }//
+
+        randomnum r1 = new randomnum();
+        int x = r1.randomint(0, T1);
+        //  System.out.println(" Random value for A  " + x);
+
+
+        ////////////////SWITCH CASE FOR 2nd DEVICE//////////////////////////////////////////////////////////////////////////////////////////
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println(" How many attributes you have FOR DEVICE B ");
+        Scanner scanner3 = new Scanner(System.in);
+        int num1 = scanner3.nextInt();
+        String[] keep1 = new String[num1];
+        int k1 = 0;
+
+        DeviceAttribute d2 = new DeviceAttribute();
+        DeviceCertificate dc2 = new DeviceCertificate();
+        DeviceStatus ds2 = new DeviceStatus();
+
+
+        for (int J = 1; J < num1 + 1; J++) {
+
+            System.out.println(" Enter Key of" + J + " attributes you have for DEVICE 2 ");
+            String numatt2 = scanner2.next();
+            keep1[k1] = numatt2;
+            k1++;
+
+            switch (numatt2) {
+
+                case "oda1":
+                    System.out.println("Enter Device Name:MAX= 10 char");
+                    String device_name2 = scanner2.next();
+                    while (device_name2.length() > 10) {
+                        System.out.println("Name is too long");
+                        device_name2 = scanner2.next();
+                    }
+                    d2.setName(device_name2);
+                    System.out.println("Accepted");
+                    break;
+
+                case "oda4":
+                    System.out.println("Enter Device Description MAX = 20 char ");
+                    String desc2 = scanner2.next();
+                    while (desc2.length() > 20) {
+                        System.out.println("Description is too long");
+                        desc2 = scanner2.next();
+
+                    }
+                    d2.setDesc(desc2);
+                    System.out.println("Accepted");
+                    break;
+
+
+                case "da1":
+                    System.out.println("Enter Device ID: MAX = 3 digit");
+                    int id2 = scanner2.nextInt();
+                    while (id2 > 999) {
+                        System.out.println("out of range");
+                        id2 = scanner2.nextInt();
+                    }
+                    d2.setDeviceID(id2);
+                    System.out.println("Accepted");
+                    break;
+
+
+                case "da2":
+                    System.out.println("Enter Physical address (Mac address) length =12 ");
+                    String macadd2 = scanner2.next();
+                    while (macadd2.length() != 12) {
+                        System.out.println("not in range try again");
+                        macadd2 = scanner2.next();
+
+                    }
+                    d2.setMacadd(macadd2);
+                    System.out.println("Accepted");
+                    break;
+
+                case "da3":
+                    System.out.println("Enter Firmware Vendor MAX=6 char");
+                    String firmwareVendor2 = scanner2.next();
+                    while (firmwareVendor2.length() > 6) {
+                        System.out.println("too long ");
+                        firmwareVendor2 = scanner2.next();
+                    }
+                    d2.setFirmVendor(firmwareVendor2);
+                    System.out.println("Accepted");
+
+                    System.out.println("Enter Firmware Version");
+                    double firmNum2 = scanner2.nextDouble();
+
+                    d2.setFirmNum(firmNum2);
+                    System.out.println("Accepted");
+                    break;
+
+
+                case "dc3":
+                    System.out.println("Enter device public key MAX=10 digit");
+                    String publickey2 = scanner2.next();
+                    while (publickey2.length() != 10) {
+                        System.out.println("too long");
+
+                    }
+                    d2.setPublicKey(publickey2);
+                    System.out.println("Accepted");
+                    break;
+
+
+                case "oda5":
+                    System.out.println("Enter Hardware Version");
+                    float hardwareVersion2 = scanner2.nextFloat();
+                    d2.setHardwareVersion(hardwareVersion2);
+
+                    System.out.println("Accepted");
+                    break;
+
+                case "oda2":
+                    System.out.println("Enter Device Serial Number MAX= 6 digit");
+                    int serialNumber2 = scanner2.nextInt();
+                    while (serialNumber2 > 99999) {
+                        System.out.println("Out of range");
+
+                    }
+                    d2.setSerialNumber(serialNumber2);
+                    System.out.println("Accepted");
+                    break;
+
+
+                ////////////Device status
+                //System.out.println("Device Status");
+
+
+                case "on":
+                    System.out.println("Device On");
+                    boolean isOn2 = scanner2.nextBoolean();
+                    ds2.setOn(isOn2);
+                    break;
+
+                case "cf":
+                    System.out.println("Device Configured");
+                    boolean isConfigured2 = scanner2.nextBoolean();
+                    ds2.setIsconfigured(isConfigured2);
+                    break;
+
+
+                ///////////Device certificate
+
+                // System.out.println("Details about Digital certificate");
+
+
+                case "oca1":
+                    System.out.println("Enter issuer authority name");
+                    String issuer2 = scanner2.next();
+                    dc2.setIssuer(issuer2);
+                    break;
+
+                case "dc1":
+                    System.out.println("Enter certificate serial number MAX= 6 digit");
+                    int sernum2 = scanner2.nextInt();
+                    while (sernum2 > 99999) {
+                        System.out.println("serial number is too long ");
+
+                    }
+                    dc2.setSerialNumber(sernum2);
+                    System.out.println("Accepted");
+                    break;
+
+                case "dc2":
+                    System.out.println("Enter the digital signature length= 12 char");
+                    String signalgo2 = scanner2.next();
+                    while (signalgo2.length() != 12) {
+                        System.out.println("Out of range");
+                        signalgo2 = scanner2.next();
+
+                    }
+                    dc2.setSignAlgo(signalgo2);
+                    System.out.println("Accepted");
+                    break;
+
+                case "def":
+
+                    System.out.println("Enter the date of issue MM/dd/yyyy");
+
+                    String expectedPattern = "MM/dd/yyyy";
+                    SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
+                    try {
+                        // (2) give the formatter a String that matches the SimpleDateFormat pattern
+                        String date2 = scanner2.next();
+                        Date date = formatter.parse(date2);
+
+                        dc2.setDateOfIssue(date);
+                    } catch (ParseException e) {
+                        // execution will come here if the String that is given
+                        // does not match the expected format.
+                        e.printStackTrace();
+                    }
+                    System.out.println("Enter validity status");
+                    boolean validity2 = scanner2.nextBoolean();
+                    dc2.setValidity(validity2);
+                    System.out.println("Accepted");
+                    break;
+
+
+            }
+
+
+        }
+        System.out.println("device B attributes list number" + Arrays.toString(keep1));
+
+        ////////////////////personal traints for Device 2 ///////////////////////////////////////////////////////////////////////////////////////
+
+        ////////////////// rules for optional property
+
+        System.out.println("DEVICE B TRUST LEVEL");
+
+        if (d2.getDeviceID() != 0 && d2.getMacadd() != null && d2.getFirmNum() != 0 && d2.getFirmVendor() != null && dc2.getDateOfIssue() != null && dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0 && d2.getPublicKey() != null) {
+            T2 = 5;
+            System.out.println("Level 5 Trust");
+        } else if ((d2.getDeviceID() != 0 && d2.getMacadd() != null) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0 && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+
+            System.out.println("Level 4 Trust");
+        } else if ((d2.getMacadd() != null && d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0 && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d2.getDeviceID() != 0 && d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0 && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d2.getDeviceID() != 0 && d2.getMacadd() != null) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d2.getMacadd() != null && d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d2.getDeviceID() != 0 && d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d2.getDeviceID() != 0 && d2.getMacadd() != null) && (dc2.getValidity() == true && dc2.getSerialNumber() != 0 && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d2.getMacadd() != null && d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getValidity() == true && dc2.getSerialNumber() != 0 && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d2.getDeviceID() != 0 && d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getValidity() == true && dc2.getSerialNumber() != 0 && dc2.getDateOfIssue() != null)) {
+            T2 = 4;
+            System.out.println("Level 4 trust");
+        }
+        ////////////////level 3
+        else if ((d2.getDeviceID() != 0) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getDateOfIssue() != null)) {
+            T2 = 3;
+            System.out.println("Level 3 trust");
+        } else if ((d2.getMacadd() != null) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getDateOfIssue() != null)) {
+            T2 = 3;
+            System.out.println("Level 3 trust");
+        } else if ((d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getValidity() == true && dc2.getSignAlgo() != null && dc2.getDateOfIssue() != null)) {
+            T2 = 3;
+            System.out.println("Level 3 trust");
+        }
+        ////////////////////level 2
+        else if ((d2.getDeviceID() != 0) && (dc2.getValidity() == true && d2.getPublicKey() != null && dc2.getDateOfIssue() != null)) {
+            T2 = 2;
+            System.out.println("Level 2 trust");
+        } else if ((d2.getMacadd() != null) && (dc2.getValidity() == true && d2.getPublicKey() != null && dc2.getDateOfIssue() != null)) {
+            T2 = 2;
+            System.out.println("Level 2 trust");
+        }
+
+        ///////level 1
+
+        else if ((d2.getDeviceID() != 0) && (dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0 && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d2.getMacadd() != null) && (dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0 && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0 && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        }///////
+
+        else if ((d2.getDeviceID() != 0) && (dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d2.getMacadd() != null) && (dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getSignAlgo() != null && dc2.getSerialNumber() != 0)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        }///
+
+        else if ((d2.getDeviceID() != 0) && (dc2.getSerialNumber() != 0 && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d2.getMacadd() != null) && (dc2.getSerialNumber() != 0 && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getSerialNumber() != 0 && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        }////
+
+        else if ((d2.getDeviceID() != 0) && (dc2.getSignAlgo() != null && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d2.getMacadd() != null) && (dc2.getSignAlgo() != null && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getSignAlgo() != null && d2.getPublicKey() != null)) {
+            T2 = 1;
+            System.out.println("Level 1 trust");
+        }
+        ////////////level 0
+
+        else if ((d2.getDeviceID() != 0) && (dc2.getSignAlgo() != null)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d2.getMacadd() != null) && (dc2.getSignAlgo() != null)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getSignAlgo() != null)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        }///
+
+        else if ((d2.getDeviceID() != 0) && (dc2.getSerialNumber() != 0)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d2.getMacadd() != null) && (dc2.getSerialNumber() != 0)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d2.getFirmNum() != 0 && d2.getFirmVendor() != null) && (dc2.getSerialNumber() != 0)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        }///
+
+
+        else if ((d2.getDeviceID() != 0) && (d2.getPublicKey() != null)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d2.getMacadd() != null) && (d2.getPublicKey() != null)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d2.getFirmNum() != 0) && (d2.getPublicKey() != null)) {
+            T2 = 0;
+            System.out.println("Level 0 trust");
+        }//
+
+        randomnum r2 = new randomnum();
+        int x2 = r2.randomint(0, T2);
+        // System.out.println(" Random value for A  " + x2);
+
+
+        ////////////////////////////// third device attributes list //////////////////
+        Scanner scanner5 = new Scanner(System.in);
+        Scanner scanner4 = new Scanner(System.in);
+
+        System.out.println(" how many attributes you have FOR DEVICE C ");
+
+        int num2 = scanner5.nextInt();
+        int k2 = 0;
+        String[] keep2 = new String[num2];
+
+        DeviceAttribute d3 = new DeviceAttribute();
+        DeviceCertificate dc3 = new DeviceCertificate();
+        DeviceStatus ds3 = new DeviceStatus();
+
+        for (int K = 1; K < num2 + 1; K++) {
+
+            System.out.println(" Enter Key of " + K + " attributes you have for DEVICE 3 ");
+            String numatt3 = scanner4.next();
+
+            keep2[k2] = numatt3;
+            k2++;
+            switch (numatt3) {
+
+                case "oda1":
+                    System.out.println("Enter Device Name:MAX = 10 char");
+                    String device_name3 = scanner4.next();
+                    while (device_name3.length() > 10) {
+                        System.out.println("Too long name ");
+                        device_name3 = scanner4.next();
+
+                    }
+                    d3.setName(device_name3);
+                    System.out.println("Accepted");
+                    break;
+
+                case "oda4":
+                    System.out.println("Enter Device Description MAX =20 char");
+                    String desc3 = scanner4.next();
+                    while (desc3.length() > 20) {
+                        System.out.println("description is too long");
+                        desc3 = scanner4.next();
+                    }
+                    d3.setDesc(desc3);
+                    System.out.println("Accepted");
+                    break;
+
+
+                case "da1":
+                    System.out.println("Enter Device ID:MAX 3 digit ");
+                    int id3 = scanner4.nextInt();
+                    while (id3 > 999) {
+                        System.out.println("device id is too long enter again");
+                        id3 = scanner4.nextInt();
+
+                    }
+                    d3.setDeviceID(id3);
+                    System.out.println("Accepted");
+                    break;
+
+
+                case "da2":
+                    System.out.println("Enter Physical address (Mac address) length= 12  ");
+                    String macadd3 = scanner4.next();
+                    while (macadd3.length() != 12) {
+                        System.out.println("Too long mac address");
+                        macadd3 = scanner4.next();
+                    }
+                    d3.setMacadd(macadd3);
+                    System.out.println("Accepted");
+                    break;
+
+                case "da3":
+                    System.out.println("Enter Firmware Vendor MAX = 6 char");
+                    String firmwareVendor3 = scanner4.next();
+                    while (firmwareVendor3.length() > 6) {
+                        System.out.println("too long vendor name");
+                        firmwareVendor3 = scanner4.next();
+                    }
+                    d3.setFirmVendor(firmwareVendor3);
+                    System.out.println("Accepted");
+
+
+                    System.out.println("Enter Firmware Version");
+                    double firmNum3 = scanner4.nextDouble();
+
+                    d3.setFirmNum(firmNum3);
+                    break;
+
+
+                case "dc3":
+                    System.out.println("Enter device public key MAX = 10  ");
+                    String publickey3 = scanner4.next();
+                    while (publickey3.length() != 10) {
+                        System.out.println("out of range");
+
+                    }
+                    d3.setPublicKey(publickey3);
+                    System.out.println("Accepted");
+                    break;
+
+
+                case "oda5":
+                    System.out.println("Enter Hardware Version");
+                    float hardwareVersion3 = scanner4.nextFloat();
+                    d3.setHardwareVersion(hardwareVersion3);
+                    System.out.println("Accepted");
+                    break;
+
+                case "oda2":
+                    System.out.println("Enter Device Serial Number MAX = 5 digits");
+                    int serialNumber3 = scanner4.nextInt();
+                    while (serialNumber3 > 99999) {
+                        System.out.println("out of range ");
+                        serialNumber3 = scanner4.nextInt();
+                    }
+                    d3.setSerialNumber(serialNumber3);
+                    System.out.println("Accepted");
+                    break;
+
+
+                ////////////Device status
+                //System.out.println("Device Status");
+
+
+                case "on":
+                    System.out.println("Device On");
+                    boolean isOn3 = scanner4.nextBoolean();
+                    ds3.setOn(isOn3);
+                    break;
+
+                case "cf":
+                    System.out.println("Device Configured");
+                    boolean isConfigured3 = scanner4.nextBoolean();
+                    ds3.setIsconfigured(isConfigured3);
+                    break;
+
+
+                ///////////Device certificate
+
+                // System.out.println("Details about Digital certificate");
+
+
+                case "oca1":
+                    System.out.println("Enter issuer authority name MAX =10 char");
+                    String issuer3 = scanner4.next();
+                    while (issuer3.length() != 10) {
+                        System.out.println("try again out of range ");
+                        issuer3 = scanner4.next();
+                    }
+                    dc3.setIssuer(issuer3);
+                    System.out.println("Accepted");
+                    break;
+
+                case "dc1":
+                    System.out.println("Enter serial number MAX= 5 digit");
+                    int sernum3 = scanner4.nextInt();
+                    while (sernum3 > 99999) {
+                        System.out.println("Serial num is too long try again");
+                        sernum3 = scanner4.nextInt();
+
+                    }
+                    dc3.setSerialNumber(sernum3);
+                    System.out.println("Accepted");
+                    break;
+
+                case "dc2":
+                    System.out.println("Enter digital signature length=12 ");
+                    String signalgo3 = scanner4.next();
+                    while (signalgo3.length() != 12) {
+
+                        System.out.println(" too long try again ");
+                        signalgo3 = scanner4.next();
+                    }
+                    dc3.setSignAlgo(signalgo3);
+                    System.out.println("Accepted");
+                    break;
+
+                case "def":
+
+                    System.out.println("Enter the date of issue MM/dd/yyyy");
+
+                    String expectedPattern = "MM/dd/yyyy";
+                    SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
+                    try {
+                        // (2) give the formatter a String that matches the SimpleDateFormat pattern
+                        String date2 = scanner4.next();
+                        Date date = formatter.parse(date2);
+
+                        dc3.setDateOfIssue(date);
+                    } catch (ParseException e) {
+                        // execution will come here if the String that is given
+                        // does not match the expected format.
+                        e.printStackTrace();
+                    }
+                    System.out.println("Enter validity status");
+                    boolean validity2 = scanner4.nextBoolean();
+                    dc3.setValidity(validity2);
+                    System.out.println("Accepted");
+                    break;
+
+
+            }
+
+        }
+
+        System.out.println("device C attributes list number" + Arrays.toString(keep2));
+
+
+///////////////////////////Personal attributes for device 3 CHECK /////////////////
+
+        System.out.println("DEVICE C trust LEVEL");
+
+        if (d3.getDeviceID() != 0 && d3.getMacadd() != null && d3.getFirmNum() != 0 && d3.getFirmVendor() != null && dc3.getDateOfIssue() != null && dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0 && d3.getPublicKey() != null) {
+            T3 = 5;
+            System.out.println("Level 5 Trust");
+        } else if ((d3.getDeviceID() != 0 && d3.getMacadd() != null) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0 && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+
+            System.out.println("Level 4 Trust");
+        } else if ((d3.getMacadd() != null && d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0 && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d3.getDeviceID() != 0 && d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0 && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d3.getDeviceID() != 0 && d3.getMacadd() != null) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d3.getMacadd() != null && d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d3.getDeviceID() != 0 && d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d3.getDeviceID() != 0 && d3.getMacadd() != null) && (dc3.getValidity() == true && dc3.getSerialNumber() != 0 && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d3.getMacadd() != null && d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getValidity() == true && dc3.getSerialNumber() != 0 && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+            System.out.println("Level 4 trust");
+        } else if ((d3.getDeviceID() != 0 && d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getValidity() == true && dc3.getSerialNumber() != 0 && dc3.getDateOfIssue() != null)) {
+            T3 = 4;
+            System.out.println("Level 4 trust");
+        }
+        ////////////////level 3
+        else if ((d3.getDeviceID() != 0) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getDateOfIssue() != null)) {
+            T3 = 3;
+            System.out.println("Level 3 trust");
+        } else if ((d3.getMacadd() != null) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getDateOfIssue() != null)) {
+            T3 = 3;
+            System.out.println("Level 3 trust");
+        } else if ((d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getValidity() == true && dc3.getSignAlgo() != null && dc3.getDateOfIssue() != null)) {
+            T3 = 3;
+            System.out.println("Level 3 trust");
+        }
+        ////////////////////level 2
+        else if ((d3.getDeviceID() != 0) && (dc3.getValidity() == true && d3.getPublicKey() != null && dc3.getDateOfIssue() != null)) {
+            T3 = 2;
+            System.out.println("Level 2 trust");
+        } else if ((d3.getMacadd() != null) && (dc3.getValidity() == true && d3.getPublicKey() != null && dc3.getDateOfIssue() != null)) {
+            T3 = 2;
+            System.out.println("Level 2 trust");
+        }
+
+        ///////level 1
+
+        else if ((d3.getDeviceID() != 0) && (dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0 && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d3.getMacadd() != null) && (dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0 && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0 && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        }///////
+
+        else if ((d3.getDeviceID() != 0) && (dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d3.getMacadd() != null) && (dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getSignAlgo() != null && dc3.getSerialNumber() != 0)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        }///
+
+        else if ((d3.getDeviceID() != 0) && (dc3.getSerialNumber() != 0 && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d3.getMacadd() != null) && (dc3.getSerialNumber() != 0 && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getSerialNumber() != 0 && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        }////
+
+        else if ((d3.getDeviceID() != 0) && (dc3.getSignAlgo() != null && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d3.getMacadd() != null) && (dc3.getSignAlgo() != null && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        } else if ((d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getSignAlgo() != null && d3.getPublicKey() != null)) {
+            T3 = 1;
+            System.out.println("Level 1 trust");
+        }
+        ////////////level 0
+
+        else if ((d3.getDeviceID() != 0) && (dc3.getSignAlgo() != null)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d3.getMacadd() != null) && (dc3.getSignAlgo() != null)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getSignAlgo() != null)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        }///
+
+        else if ((d3.getDeviceID() != 0) && (dc3.getSerialNumber() != 0)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d3.getMacadd() != null) && (dc3.getSerialNumber() != 0)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d3.getFirmNum() != 0 && d3.getFirmVendor() != null) && (dc3.getSerialNumber() != 0)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        }///
+
+
+        else if ((d3.getDeviceID() != 0) && (d3.getPublicKey() != null)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d3.getMacadd() != null) && (d3.getPublicKey() != null)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        } else if ((d3.getFirmNum() != 0) && (d3.getPublicKey() != null)) {
+            T3 = 0;
+            System.out.println("Level 0 trust");
+        }//
+
+
+        //////////////// SHARED PROTOCOLS BETWEEN DEVICES  ////////////////////////////
+
+
+        System.out.println("Do you want to check shared protocols between A and B both devices");
+        Scanner scanner10 = new Scanner(System.in);
+        boolean ans = scanner10.nextBoolean();
+        if (ans == true) {
+            if (d1.getFirmVendor().equals(d2.getFirmVendor()) && d1.getFirmVendor() != null && d2.getFirmVendor() != null) {
+                System.out.println(" both has same OS built-In");
+            }
+            if (d2.getFirmNum() == d1.getFirmNum() && d2.getFirmNum() != 0 && d1.getFirmNum() != 0) {
+                System.out.println(" A and B both has same OS Version");
+            }
+            if (d1.getName().equals(d2.getName()) && d1.getName() != null && d2.getName() != null) {
+                System.out.println("both device has same Name");
+
+            }
+            if (dc1.getIssuer() == dc2.getIssuer() && dc1.getSignAlgo() == dc2.getSignAlgo() && dc1.getIssuer() != null && dc2.getIssuer() != null && dc1.getSignAlgo() != null && dc2.getSignAlgo() != null) {
+
+                System.out.println("both device is certified by same CA authority");
+            } else {
+
+                System.out.println(".........BOTH DEVICE DOES NOT SHARE ANY PROTOCOLS .......");
+            }
+        }
+        System.out.println("Do you want to check shared protocols between B and C both devices");
+        Scanner scanner11 = new Scanner(System.in);
+        boolean ans1 = scanner11.nextBoolean();
+        if (ans1 == true) {
+            if (d3.getFirmVendor().equals(d2.getFirmVendor()) && d3.getFirmVendor() != null && d2.getFirmVendor() != null) {
+                System.out.println(" B and C both has same OS built-In");
+            }
+            if (d3.getFirmNum() == d2.getFirmNum() && d3.getFirmNum() != 0 && d2.getFirmNum() != 0) {
+                System.out.println(" B and C both has same OS Version");
+            }
+            if (d3.getName().equals(d2.getName()) && d3.getName() != null && d2.getName() != null) {
+                System.out.println("B and C both device has same Name");
+
+            }
+            if (dc3.getIssuer() == dc2.getIssuer() && dc3.getSignAlgo() == dc2.getSignAlgo() && dc3.getIssuer() != null && dc2.getIssuer() != null && dc3.getSignAlgo() != null && dc2.getSignAlgo() != null) {
+
+                System.out.println("B and C both device is certified by same CA authority");
+            } else {
+
+                System.out.println("......B and C ...BOTH DEVICE DOES NOT SHARE ANY PROTOCOLS .......");
+            }
+        }
+
+        System.out.println("Do you want to check shared protocols between A and C both devices");
+        Scanner scanner12 = new Scanner(System.in);
+        boolean ans2 = scanner12.nextBoolean();
+        if (ans2 == true) {
+            if (d3.getFirmVendor().equals(d1.getFirmVendor()) && d3.getFirmVendor() != null && d1.getFirmVendor() != null) {
+                System.out.println(" A and C both has same OS built-In");
+            }
+
+            if (d3.getFirmNum() == d1.getFirmNum() && d3.getFirmNum() != 0 && d1.getFirmNum() != 0) {
+                System.out.println(" A and C both has same OS Version");
+            }
+            if (d3.getName().equals(d1.getName()) && d3.getName() != null && d1.getName() != null) {
+                System.out.println("A and C both device has same Name");
+
+            }
+            if (dc3.getIssuer() == dc1.getIssuer() && dc3.getSignAlgo() == dc1.getSignAlgo() && dc3.getIssuer() != null && dc1.getIssuer() != null && dc3.getSignAlgo() != null && dc1.getSignAlgo() != null) {
+
+                System.out.println("A and C both device is certified by same CA authority");
+            } else {
+
+                System.out.println("......B and C ...BOTH DEVICE DOES NOT SHARE ANY PROTOCOLS .......");
+
+
+                boolean di12 = false;
+                boolean di21 = false;
+                boolean di23 = false;
+                boolean di32 = false;
+                boolean di13 = false;
+                boolean di31 = false;
+
+/////////////////////////////////////////////////////////RECOMMANDATION ////////////////////////////////
+                System.out.println("Device A  ... Have you communicated with anyone");
+                String interact = scanner.next();
+                ds1.setInteracted(interact);
+                if (interact.equals("yes")) {
+                    System.out.println("was is it with device B ?");
+                    di12 = scanner.nextBoolean();
+                    if (di12 == true) {
+                        ds1.setIsconfigured12(di12);
+                        int ATFB = T1;
+                        System.out.println(" device A trust device B");
+
+                    }
+                    System.out.println("was is it with device C ?");
+                    di13 = scanner.nextBoolean();
+                    if (di13 == true) {
+                        int ATFC = T1;
+                        ds1.setIsconfigured13(di13);
+                        System.out.println(" device A trust device C ");
+                    }
+
+                } else {
+                    System.out.println(" device A has not interacted with anyone");
+                }
+
+                System.out.println("Device B ...Have you communicated with anyone");
+                String interact1 = scanner2.next();
+                ds2.setInteracted(interact1);
+                if (interact1.equals("yes")) {
+                    System.out.println("was is it with device A ?");
+                    di21 = scanner2.nextBoolean();
+                    if (di21 == true) {
+                        int BTFA = T2;
+                        ds2.setIsconfigured21(di21);
+                        System.out.println(" device B trust device A ");
+                    }
+                    System.out.println(" was is it with device C ?");
+                    di23 = scanner2.nextBoolean();
+                    if (di23 == true) {
+                        int BTFC = T2;
+                        ds2.setIsconfigured23(di23);
+                        System.out.println(" device B trust device C ");
+                    }
+                } else {
+                    System.out.println(" device B has not interacted with anyone");
+                }
+
+
+                System.out.println("Device C .... Have you communicated with anyone");
+                String interact2 = scanner4.next();
+                ds3.setInteracted(interact2);
+                if (interact2.equals("yes")) {
+                    System.out.println(" was it  with device A ?");
+                    di31 = scanner4.nextBoolean();
+                    if (di31 == true) {
+                        int CTFA = T3;
+                        ds3.setIsconfigured31(di31);
+                        System.out.println(" device C trust device A");
+
+
+                    }
+                    System.out.println(" was it  with device B ?");
+                    di32 = scanner4.nextBoolean();
+                    if (di32 == true) {
+                        int CTFB = T3;
+                        ds3.setIsconfigured32(di32);
+                        System.out.println(" device C trust device B ");
+                    }
+                } else {
+                    System.out.println(" device C  has not interacted with anyone");
+                }
+            }
+        }
+    }
+}
